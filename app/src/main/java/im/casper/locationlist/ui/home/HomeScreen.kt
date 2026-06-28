@@ -22,6 +22,7 @@ import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -29,16 +30,19 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import im.casper.locationlist.R
 import im.casper.locationlist.navigation.Routes
+import im.casper.locationlist.ui.TopoBackground
 
 private data class HomeMenuItem(
     val title: String,
@@ -63,34 +67,46 @@ fun HomeScreen(onNavigate: (String) -> Unit) {
             Icons.Default.Settings, Routes.SETTINGS),
     )
 
-    Scaffold(
-        topBar = { TopAppBar(title = { }) }
-    ) { innerPadding ->
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding),
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            item {
-                Surface(
-                    color = Color.Transparent,
-                    shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Image(
-                        painter = painterResource(R.drawable.locationlist_banner),
-                        contentDescription = "LocationList",
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(12.dp),
-                    )
+    val dark = MaterialTheme.colorScheme.background.luminance() < 0.5f
+
+    TopoBackground {
+        Scaffold(
+            containerColor = Color.Transparent,
+            topBar = {
+                TopAppBar(
+                    title = { },
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = Color.Transparent,
+                    ),
+                )
+            },
+        ) { innerPadding ->
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding),
+                contentPadding = PaddingValues(16.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                item {
+                    Surface(
+                        color = if (dark) Color.Transparent else Color.White,
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        Image(
+                            painter = painterResource(R.drawable.locationlist_banner),
+                            contentDescription = "LocationList",
+                            contentScale = ContentScale.Fit,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(12.dp),
+                        )
+                    }
                 }
-            }
-            items(menuItems) { item ->
-                HomeMenuCard(item = item, onClick = { onNavigate(item.route) })
+                items(menuItems) { item ->
+                    HomeMenuCard(item = item, onClick = { onNavigate(item.route) })
+                }
             }
         }
     }
@@ -98,7 +114,14 @@ fun HomeScreen(onNavigate: (String) -> Unit) {
 
 @Composable
 private fun HomeMenuCard(item: HomeMenuItem, onClick: () -> Unit) {
+    val dark = MaterialTheme.colorScheme.background.luminance() < 0.5f
+    val cardColor = if (dark) Color(0xFF26262C) else Color.White
+
     Card(
+        colors = CardDefaults.cardColors(
+            containerColor = cardColor,
+            contentColor = MaterialTheme.colorScheme.onSurface,
+        ),
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onClick() }
