@@ -8,7 +8,7 @@ Built with Kotlin and Jetpack Compose. No API keys or accounts required — the 
 
 Only permissions are location based... because that's kinda the point of the app. It does still use Google Play Services, for ease of development. In some future version, I'll try to work around that or make it optional.
 
-Should work for any Android higher than 7.
+Should work for any Android higher than 7 (Android Nougat from 2016). Could be handy for old tablet or phone.
 
 ## Features
 
@@ -50,7 +50,7 @@ For a real-world test, a physical device is recommended — GPS, camera, and liv
 
 ## Permissions
 
-- `ACCESS_FINE_LOCATION` / `ACCESS_COARSE_LOCATION` — to fill in the current location when saving.
+- `ACCESS_FINE_LOCATION` / `ACCESS_COARSE_LOCATION` — to fill in the current location when saving. Should be a bit obvious
 - `INTERNET` / `ACCESS_NETWORK_STATE` — to download map tiles. Should ONLY connect to OSM. Does not phone home.
 
 The camera and gallery use the system pickers, so no camera or storage permission is required.
