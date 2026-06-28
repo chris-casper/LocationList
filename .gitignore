@@ -1,18 +1,35 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
+# Built application files and build output
+build/
 /captures
+*.apk
+*.aar
+*.ap_
+*.aab
+
+# Gradle
+.gradle/
+# NOTE: do NOT ignore the Gradle wrapper — gradlew, gradlew.bat, and
+# gradle/wrapper/* must be committed so others can build the project.
+
+# Kotlin
+.kotlin/
+
+# Local configuration (machine-specific SDK path — never commit)
+local.properties
+
+# Signing keys and secrets — NEVER commit these
+*.jks
+*.keystore
+keystore.properties
+
+# Android Studio / IntelliJ
+*.iml
+.idea/
+
+# Native build
 .externalNativeBuild
 .cxx
-local.properties
-* text=auto eol=lf
-*.bat text eol=crlf
-gradlew text eol=lf
+
+# OS / misc
+.DS_Store
+*.log
