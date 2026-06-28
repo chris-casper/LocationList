@@ -40,7 +40,10 @@ fun AppNavHost() {
             LocationDetailScreen(locationId = id, onBack = { navController.popBackStack() })
         }
         composable(Routes.MAP) {
-            MapScreen(onBack = { navController.popBackStack() })
+            MapScreen(
+                onBack = { navController.popBackStack() },
+                onLocationClick = { id -> navController.navigate(Routes.locationDetail(id)) },
+            )
         }
         composable(Routes.SHARE) {
             ShareScreen(onBack = { navController.popBackStack() })
