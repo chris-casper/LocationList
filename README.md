@@ -1,5 +1,9 @@
 # LocationList
 
+| Light Mode | Dark Mode |
+|:---:|:---:|
+| ![Menu in light mode](assets/menu-light-mode.png) | ![Menu in dark mode](assets/menu-dark-mode.png) |
+
 An Android app for saving, organizing, and viewing named locations — like a contact list, but for places. 
 
 Each location can carry GPS coordinates, a description, notes, groups, tags, and photos, and the whole collection can be viewed on a map or imported/exported as KML/KMZ.
@@ -9,6 +13,18 @@ Built with Kotlin and Jetpack Compose. No API keys or accounts required — the 
 Only permissions are location based... because that's kinda the point of the app. It does still use Google Play Services, for ease of development. In some future version, I'll try to work around that or make it optional.
 
 Should work for any Android higher than 7 (Android Nougat from 2016). Could be handy for old tablet or phone.
+
+## Screenshots
+
+Map view of the locations. Click on a pin to get the specific location
+![Map view](assets/map.png)
+
+Tick the box to enable RF-Sim functionality 
+![RF-Sim server](assets/rf-sim-server.png)
+
+The RF-Sim server options
+![RF-Sim server menu](assets/rf-sim-server-menu.png)
+
 
 ## Features
 
