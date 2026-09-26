@@ -17,12 +17,15 @@ Should work for any Android higher than 7 (Android Nougat from 2016). Could be h
 ## Screenshots
 
 Map view of the locations. Click on a pin to get the specific location
+
 ![Map view](assets/map.png)
 
 Tick the box to enable RF-Sim functionality 
+
 ![RF-Sim server](assets/rf-sim-server.png)
 
 The RF-Sim server options
+
 ![RF-Sim server menu](assets/rf-sim-server-menu.png)
 
 
